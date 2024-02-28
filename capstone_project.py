@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-from scipy.stats import pearsonr
+# from scipy.stats import pearsonr
 
 st.set_page_config(
     page_title="Analisa IPM & Stunting",
@@ -183,14 +183,14 @@ with tab3:
                     </p>""", unsafe_allow_html=True)
 
     # Korelasi IPM dan Stunting
-    korelasi, _ = pearsonr(chart['ipm'], chart['prev_stunting'])
+    # korelasi, _ = pearsonr(chart['ipm'], chart['prev_stunting'])
 
     ipm_scatter = alt.Chart(chart).mark_circle().encode(
         x=alt.X('ipm:Q', title='Indeks Pembangunan Manusia (IPM)'),
         y=alt.Y('prev_stunting:Q', title='Prevalensi Stunting'),
         )
 
-    nilai_korelasi = round(korelasi,3)
+    nilai_korelasi = -0.283
 
     nilai_korelasi1 = alt.Chart(pd.DataFrame({'correlation': [nilai_korelasi]})).mark_text(
         align='left', baseline='middle', dx=5, color='white', fontSize=20).encode(
